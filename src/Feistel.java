@@ -77,7 +77,7 @@ private int[][][]s= {s1,s2,s3,s4,s5,s6,s7,s8};
 		
 		for(int i=0;i<8;i++)
 		{
-			int shift=(i)*6;
+			int shift=(7-i)*6;
 			int second = (int) ((after_xor>>shift)&0x3f);
 			
 			String secondstr = String.format("%6s",Integer.toBinaryString(second) ).replace(' ','0');

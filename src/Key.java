@@ -27,18 +27,7 @@ public class Key {
 	
 	public static int rotateLeft(int target, int amount)
 	{
-		int ltarget=target;
-		int lamount=amount;
-		int add;
-		while(lamount!=0)
-		{
-			ltarget=ltarget<<1;
-			add=(ltarget&0xf0000000)>>28;
-			ltarget|=add;
-			ltarget=ltarget&0x0fffffff;
-			lamount--;
-		}
-		return ltarget;
+		return (target<<amount)| (target>>(32-amount));
 	}
 	
 	public long[] MakeSubKey(long key) {
@@ -56,8 +45,9 @@ public class Key {
 
 		for(int i=0; i<16;i++)
 		{
-			beforepc2_1=Integer.rotateLeft(beforepc2_1, shift[i]);
-			beforepc2_2=Integer.rotateLeft(beforepc2_2, shift[i]);
+			beforepc2_1=rotateLeft(beforepc2_1, shift[i]);
+			beforepc2_2=rotateLeft(beforepc2_2, shift[i]);
+
 			
 			subkey[i]= (((long)beforepc2_1<<28) | beforepc2_2);
 			String afterpc2="";
