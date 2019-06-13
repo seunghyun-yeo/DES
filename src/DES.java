@@ -6,14 +6,17 @@ public class DES {
 	private Decode de;
 		
 	DES(long mykey){
+		
 		key = new Key();
 		subkey=key.MakeSubKey(mykey);
 		en = new Encode();
 		de = new Decode();
+	
 	}
 	
 	public String encode(String input)
 	{
+
 		String inputstr=toBinaryString(input);
 		System.out.println(inputstr);
 		String result="";
@@ -28,13 +31,16 @@ public class DES {
 	
 	public String decode(String input)
 	{
+
 		String inputstr=toBinaryString(input);
 		System.out.println("decode inpout : " + inputstr);
 		String result="";
+
 		for(int i=0; i<inputstr.length();i=i+64)
 		{	
 			result=result + de.Decrypt(inputstr.substring(i,i+64), subkey);
 		}
+		
 		System.out.println(result);
 		return toString(result);
 	}
@@ -42,6 +48,7 @@ public class DES {
 	private String toBinaryString(String input)
 	{
 		String result="";
+		
 		for(int i=0; i<input.length();i++)
 		{
 			int temp=(int)input.charAt(i);
