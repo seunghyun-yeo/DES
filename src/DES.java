@@ -56,7 +56,7 @@ public class DES {
 		}
 
 		while(result.length()%64!=0)
-			result=result + "00000000";
+			result= result + "00000000";
 
 		return result;
 	}
