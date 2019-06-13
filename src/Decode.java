@@ -1,7 +1,8 @@
 
 public class Decode extends Encode {
-	public static String Decrypt(String input, long[] subkey)
+	public String Decrypt(String input, long[] subkey)
 	{
+		
 		String plain="";
 		Feistel feistel= new Feistel();
 		String afterip = "";
@@ -29,13 +30,13 @@ public class Decode extends Encode {
 		}
 
 		long result=((long)afterip_2<<32) | afterip_1;
+		
 		String resultstr=String.format("%64s", Long.toBinaryString(result) ).replace(' ','0');
 	
 		for(int i=0; i<64;i++)
 		{
 			plain=plain + resultstr.charAt(ipi[i]-1);
 		}
-	
 		return plain;
 	}
 }

@@ -18,14 +18,15 @@ public class Encode {
 						 34,  2, 42, 10, 50, 18, 58, 26,
 						 33,  1, 41,  9, 49, 17, 57, 25};
 	
-	static String chiper="";
+	
 
 
 
-	public static String Crypto(String input, long[] subkey) {
+	public String Crypto(String input, long[] subkey) {
 
 		Feistel feistel= new Feistel();
 		String afterip = "";
+		String chiper="";
 		
 		for(int i=0;i<64;i++)
 		{
@@ -56,7 +57,6 @@ public class Encode {
 		{
 			chiper=chiper + resultstr.charAt(ipi[i]-1);
 		}
-		
-		return chiper;
+			return chiper;
 	}
 }
