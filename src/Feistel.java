@@ -77,7 +77,7 @@ private int[][][]s= {s1,s2,s3,s4,s5,s6,s7,s8};
 		
 		for(int i=0;i<8;i++)
 		{
-			int shift=(7-i)*6;
+			int shift=(i)*6;
 			int second = (int) ((after_xor>>shift)&0x3f);
 			
 			String secondstr = String.format("%6s",Integer.toBinaryString(second) ).replace(' ','0');
@@ -85,9 +85,9 @@ private int[][][]s= {s1,s2,s3,s4,s5,s6,s7,s8};
 			int row = Integer.parseInt(secondstr.substring(0,1)+secondstr.substring(5,6),2);
 			second=Integer.parseInt(secondstr.substring(1,5),2);
 			
-			int result_from_s = s[7-i][row][second];
+			int result_from_s = s[i][row][second];
 			
-			result |= result_from_s<<((7-i)*4);
+			result |= result_from_s<<((i)*4);
 		}
 		
 		String result_str_tmp=String.format("%32s",Integer.toBinaryString(result) ).replace(' ', '0');
