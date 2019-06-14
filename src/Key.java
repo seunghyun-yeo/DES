@@ -27,7 +27,7 @@ public class Key {
 	
 	public static int rotateLeft(int target, int amount)
 	{
-		return (target<<amount)| (target>>(32-amount));
+		return (target<<amount)| (target>>(28-amount));
 	}
 	
 	public long[] MakeSubKey(long key) {
