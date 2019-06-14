@@ -1,4 +1,5 @@
 
+
 public class Encode {
 	static int[] ip =   
 
@@ -56,7 +57,6 @@ public class Encode {
 
 		long result=((long)afterip_2<<32) | afterip_1;
 		String resultstr=String.format("%64s", Long.toBinaryString(result) ).replace(' ','0');
-	
 		for(int i=0; i<64;i++)
 		{
 			chiper=chiper + resultstr.charAt(ipi[i]-1);

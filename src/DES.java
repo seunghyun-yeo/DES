@@ -18,14 +18,14 @@ public class DES {
 	{
 
 		String inputstr=toBinaryString(input);
-		//System.out.println(inputstr);
+		System.out.println("binary input : " + inputstr);
 		String result="";
 
 		for(int i=0; i<inputstr.length();i=i+64)
 		{
 			result=result + en.Crypto(inputstr.substring(i,i+64), subkey);
 		}
-		//System.out.println("encode output : " + result);
+		System.out.println("encode output: " + result);
 		return toString(result);
 	}
 	
@@ -33,7 +33,7 @@ public class DES {
 	{
 
 		String inputstr=toBinaryString(input);
-		//System.out.println("decode inpout : " + inputstr);
+		System.out.println("decode input : " + inputstr);
 		String result="";
 
 		for(int i=0; i<inputstr.length();i=i+64)
@@ -41,7 +41,7 @@ public class DES {
 			result=result + de.Decrypt(inputstr.substring(i,i+64), subkey);
 		}
 		
-		//System.out.println(result);
+		System.out.println("binary output: " + result);
 		return toString(result);
 	}
 	
@@ -56,7 +56,7 @@ public class DES {
 		}
 
 		while(result.length()%64!=0)
-			result= result+"00000000";
+			result= "00000000"+result;
 
 		return result;
 	}
