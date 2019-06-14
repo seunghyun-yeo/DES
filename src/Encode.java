@@ -36,7 +36,16 @@ public class Encode {
 		{
 			afterip=afterip+input.charAt(ip[i]-1);
 		}
+/*
+		String resultstr1=afterip;
+		for(int i=0; i<64;i++)
+		{
+			chiper=chiper + resultstr1.charAt(ipi[i]-1);
+		}
+		System.out.println("input: " + input + " finalip: " + chiper + "equals? " + input.equals(chiper));
 		
+		chiper = "";
+*/		
 		String afterip_1_str = String.format("%64s", afterip.substring(0,32) ).replace(' ', '0');
 		
 		String afterip_2_str = String.format("%64s", afterip.substring(32,64) ).replace(' ', '0');

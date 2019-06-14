@@ -2,8 +2,8 @@
 public class Feistel {
 	private static int[] e =
 	{32,	1,	2,	3,	4,	5,
-	 4,	5,	6,	7,	8,	9,
-	 8,	9,	10,	11,	12,	13,
+	 4, 	5,	6,	7,	8,	9,
+	 8, 	9,	10,	11,	12,	13,
 	 12,	13,	14,	15,	16,	17,
 	 16,	17,	18,	19,	20,	21,
 	 20,	21,	22,	23,	24,	25,
@@ -77,7 +77,7 @@ private int[][][]s= {s1,s2,s3,s4,s5,s6,s7,s8};
 		
 		for(int i=0;i<8;i++)
 		{
-			int shift=(i)*6;
+			int shift=(7-i)*6;
 			int second = (int) ((after_xor>>shift)&0x3f);
 			
 			String secondstr = String.format("%6s",Integer.toBinaryString(second) ).replace(' ','0');
@@ -87,7 +87,7 @@ private int[][][]s= {s1,s2,s3,s4,s5,s6,s7,s8};
 			
 			int result_from_s = s[i][row][second];
 			
-			result |= result_from_s<<((i)*4);
+			result |= result_from_s<<((7-i)*4);
 		}
 		
 		String result_str_tmp=String.format("%32s",Integer.toBinaryString(result) ).replace(' ', '0');

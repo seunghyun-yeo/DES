@@ -1,6 +1,6 @@
 
 public class DES {
-	private long[] subkey;
+	public long[] subkey;
 	private Key key;
 	private Encode en;
 	private Decode de;
@@ -19,6 +19,7 @@ public class DES {
 
 		String inputstr=toBinaryString(input);
 		System.out.println("binary input : " + inputstr);
+		System.out.println("string input : " + toString(inputstr));
 		String result="";
 
 		for(int i=0; i<inputstr.length();i=i+64)

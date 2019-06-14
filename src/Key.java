@@ -25,9 +25,8 @@ public class Key {
 	
 	static int[] shift = {1,1,2,2,2,2,2,2,1,2,2,2,2,2,2,1};
 	
-	public static int rotateLeft(int target, int amount)
+	public int rotateLeft(int target, int amount)
 	{
-		/*
 		int ltarget=target;
 		int lamount=amount;
 		int add;
@@ -39,8 +38,8 @@ public class Key {
 			ltarget=ltarget&0x0fffffff;
 			lamount--;
 		}
-		return ltarget;*/
-		return (target << amount) | (target>>(32-amount));
+		return ltarget&0x0fffffff;
+		//return (target << amount) | (target>>(32-amount));
 	}
 	
 	public long[] MakeSubKey(long key) {
@@ -62,7 +61,7 @@ public class Key {
 			beforepc2_2=rotateLeft(beforepc2_2, shift[i]);
 
 			
-			subkey[i]= (((long)beforepc2_1<<28) | beforepc2_2);
+			subkey[i]= (((long)beforepc2_1<<28) | (long)beforepc2_2);
 			String afterpc2="";
 			String test = String.format("%56s", Long.toBinaryString(subkey[i])).replace(' ', '0');
 			for(int j=0; j<48;j++)
