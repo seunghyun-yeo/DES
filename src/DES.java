@@ -18,8 +18,8 @@ public class DES {
 	{
 
 		String inputstr=toBinaryString(input);
+
 		System.out.println("binary input : " + inputstr);
-		System.out.println("string input : " + toString(inputstr));
 		String result="";
 
 		for(int i=0; i<inputstr.length();i=i+64)
@@ -57,7 +57,7 @@ public class DES {
 		}
 
 		while(result.length()%64!=0)
-			result= "00000000"+result;
+			result= result+"00000000";
 
 		return result;
 	}
