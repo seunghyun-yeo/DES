@@ -49,10 +49,11 @@ public class Encode {
 		//System.out.print(afterip_2_str.substring(i,i+4)+" ");
 		//System.out.println();
 		
-		int afterip_1=(int)(Integer.parseUnsignedInt(afterip_1_str,2)&0xffffffff);
-		int afterip_2=(int)(Integer.parseUnsignedInt(afterip_2_str,2)&0xffffffff);
+		long afterip_1=(long)(Long.parseLong(afterip_1_str,2)&0xffffffff);
+		long afterip_2=(long)(Long.parseLong(afterip_2_str,2)&0xffffffff);
 		
-		int tmp, afterfiestal;
+		long tmp=0;
+		long afterfiestal=0;
 		
 		for(int i=0; i<subkey.length; i++) {
 		

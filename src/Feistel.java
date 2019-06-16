@@ -81,10 +81,10 @@ public class Feistel {
 			
 	
 	
-	public int dofeistel(int input, long key)
+	public long dofeistel(long input, long key)
 	{
-		int result=0;
-		String inputstr = String.format("%32s",Integer.toBinaryString(input) ).replace(' ','0');
+		long result=0;
+		String inputstr = String.format("%32s",Long.toBinaryString(input) ).replace(' ','0');
 		
 		String afterexpansion_str="";
 		
@@ -99,29 +99,27 @@ public class Feistel {
 		
 		for(int i=0;i<8;i++)
 		{
-			//int shift=(7-i)*6;
-			//int col = (int) (((int)after_xor>>shift)&0x3f);
-			int col = Integer.parseInt(after_xor_str.substring(i*6,(i*6+6)),2);
-			String secondstr = String.format("%6s",Integer.toBinaryString(col) ).replace(' ','0');
+			long col = Long.parseLong(after_xor_str.substring(i*6,(i*6+6)),2);
+			String secondstr = String.format("%6s",Long.toBinaryString(col) ).replace(' ','0');
 			
 			//System.out.println(secondstr);
-			int row = Integer.parseInt((secondstr.substring(0,1)+secondstr.substring(5,6)),2);
+			long row = Long.parseLong((secondstr.substring(0,1)+secondstr.substring(5,6)),2);
 			col=Integer.parseInt(secondstr.substring(1,5),2);
 			
-			int result_from_s = s[i][row][col]&0xf;
+			int result_from_s = s[i][(int)row][(int)col]&0xf;
 		//	System.out.println(result_from_s);
 		//	System.out.println(i + " " + row +" "+col);
-			result |= (int)result_from_s<<((7-i)*4);
+			result |= (long)result_from_s<<((7-i)*4);
 		}
 		
-		String result_str_tmp=String.format("%32s",Integer.toBinaryString(result) ).replace(' ', '0');
+		String result_str_tmp=String.format("%32s",Long.toBinaryString(result) ).replace(' ', '0');
 		//System.out.println("rst" + result_str_tmp);
 		String result_str="";
 		
 		for(int i=0;i<p.length;i++)
 			result_str=result_str + result_str_tmp.charAt(p[i]-1);
 		
-		result=(int)((int)Long.parseUnsignedLong(result_str, 2)&0xffffffff);
+		result=(long)((long)Long.parseUnsignedLong(result_str, 2)&0xffffffff);
 		return result;
 	}
 }
